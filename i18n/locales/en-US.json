@@ -1,0 +1,41 @@
+{
+    "language": "English",
+    "greeting": "Welcome Back",
+    "sensors": {
+        "heartrate": "Heart Rate",
+        "spo2": "SPO2",
+        "vibration": "Vibration",
+        "vibration.value": {
+            "detected": "Detected",
+            "undetected": "No Vibration"
+        }
+    },
+    "settings": {
+        "title": "Settings",
+        "app": "App Settings",
+        "language": "Language",
+        "thresholds": "Edit Thresholds",
+        "save": "Save"
+    }, 
+    "library": {
+        "title": "Calming Videos"
+    },
+    "notifications": {
+        "title": "Notifications",
+        "duration": "Duration",
+        "latest": "Latest",
+        "average": "Average",
+        "detected": "detected",
+        "undetected": "undetected",
+        "minute": "m",
+        "hour": "h"
+    },
+    "toasts": {
+        "location_not_available": "The location is not available now",
+        "settings_saved": "Settings Saved Successfully",
+        "video_upload_success": "Video uploaded successfully",
+        "video_upload_failed": "Could not upload the video.",
+        "success": "Success",
+        "failed": "Failed"
+    }
+}

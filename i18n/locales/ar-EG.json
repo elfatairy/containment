@@ -1,0 +1,41 @@
+{
+    "language": "العربية",
+    "greeting": "مرحبًا بعودتك",
+    "sensors": {
+        "heartrate": "معدل ضربات القلب",
+        "spo2": "تشبع الأكسجين",
+        "vibration": "الاهتزاز",
+        "vibration.value": {
+            "detected": "تم الكشف عنه",
+            "undetected": "لا يوجد اهتزاز"
+        }
+    },
+    "settings": {
+        "title": "الإعدادات",
+        "app": "إعدادات التطبيق",
+        "language": "اللغة",
+        "thresholds": "تعديل حدود المؤشرات",
+        "save": "حفظ"
+    },
+    "library": {
+        "title": "فيديوهات التهدئة"
+    },
+    "notifications": {
+        "title": "الإشعارات",
+        "duration": "المدة",
+        "latest": "الأحدث",
+        "average": "المتوسط",
+        "detected": "تم الكشف عنه",
+        "undetected": "لا يوجد اهتزاز",
+        "minute": " د",
+        "hour": " س"
+    },
+    "toasts": {
+        "location_not_available": "الموقع غير متاح الآن",
+        "settings_saved": "تم حفظ الإعدادات بنجاح",
+        "video_upload_success": "تم رفع الفيديو بنجاح",
+        "video_upload_failed": "تعذر رفع الفيديو.",
+        "success": "نجاح",
+        "failed": "فشل"
+    }
+}

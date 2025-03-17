@@ -1,59 +1,56 @@
-import React from 'react';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { Link, Tabs } from 'expo-router';
-import { Pressable } from 'react-native';
+import { useFonts } from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
+import { useEffect } from 'react';
+import 'react-native-reanimated';
 
-import Colors from '@/constants/Colors';
-import { useColorScheme } from '@/components/useColorScheme';
-import { useClientOnlyValue } from '@/components/useClientOnlyValue';
+import { CustomTabBar, CustomTabProps } from '@/components/CustomTabBar';
+import { Entypo, Ionicons, MaterialIcons, Octicons } from '@expo/vector-icons';
 
-// You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>['name'];
-  color: string;
-}) {
-  return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
-}
+const tabs: CustomTabProps[] = [
+  {
+    name: "main",
+    href: "/",
+    Icon: <Entypo name="home" size={26} color="#caf0f8" />,
+    ActiveIcon: <Entypo name="home" size={26} color="#0077b6" />,
+    showTabBar: true
+  },
+  {
+    name: "videos",
+    href: "/videos",
+    Icon: <MaterialIcons name="video-library" size={26} color="#caf0f8" />,
+    ActiveIcon: <MaterialIcons name="video-library" size={26} color="#0077b6" />,
+    showTabBar: true
+  },
+  {
+    name: "settings",
+    href: "/settings",
+    Icon: <Ionicons name="settings" size={26} color="#caf0f8" />,
+    ActiveIcon: <Ionicons name="settings" size={26} color="#0077b6" />,
+    showTabBar: true
+  },
+];
 
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
+export default function RootLayout() {
+  const [loaded, error] = useFonts({
+    SpaceMono: require('@/assets/fonts/SpaceMono-Regular.ttf'),
+    ...FontAwesome.font,
+  });
 
-  return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        // Disable the static render of the header on web
-        // to prevent a hydration error in React Navigation v6.
-        headerShown: useClientOnlyValue(false, true),
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Link href="/modal" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color={Colors[colorScheme ?? 'light'].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="two"
-        options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-        }}
-      />
-    </Tabs>
-  );
+  // Expo Router uses Error Boundaries to catch errors in the navigation tree.
+  useEffect(() => {
+    if (error) throw error;
+  }, [error]);
+
+  useEffect(() => {
+    if (loaded) {
+      SplashScreen.hideAsync();
+    }
+  }, [loaded]);
+
+  if (!loaded) {
+    return null;
+  }
+
+  return <CustomTabBar tabs={tabs} />;
 }
